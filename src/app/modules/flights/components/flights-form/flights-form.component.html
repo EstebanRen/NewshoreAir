@@ -9,7 +9,7 @@
     <mat-label>Destino</mat-label>
     <input matInput type="text" autocomplete="off" minlength="3" maxlength="3" name="destination-flights"
       formControlName="arrivalStation" placeholder="" appAlphaUppercase />
-    <mat-error *ngIf="formFlight.hasError('sameValues', ['destination'])">Estimado usuario el origen y el destino no
+    <mat-error *ngIf="formFlight.hasError('sameValues', ['arrivalStation'])">Estimado usuario el origen y el destino no
       pueden ser iguales</mat-error>
   </mat-form-field>
 

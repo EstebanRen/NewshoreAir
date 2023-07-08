@@ -23,12 +23,12 @@ export class FlightsFormComponent {
     }, { validators: this.checkSameValues });
   }
   checkSameValues(formGroup: AbstractControl): ValidationErrors | null {
-    const origin = formGroup.get('origin')?.value;
-    const destination = formGroup.get('destination')?.value;
+    const origin = formGroup.get('originStation')?.value;
+    const destination = formGroup.get('arrivalStation')?.value;
     if (origin === destination) {
-      formGroup.get('destination')?.setErrors({ sameValues: true });
+      formGroup.get('arrivalStation')?.setErrors({ sameValues: true });
     } else {
-      formGroup.get('destination')?.setErrors(null);
+      formGroup.get('arrivalStation')?.setErrors(null);
     }
     return null;
   }
