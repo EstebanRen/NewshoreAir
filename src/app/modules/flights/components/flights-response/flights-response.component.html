@@ -1,0 +1,44 @@
+<div class="container-flight-data">
+    <div class="container" *ngIf="this.flightData.length==0">
+        <img src="assets/svg/plane.svg" alt="Avión" class="image" />
+        <h1 class="title">¡Con Newshore tus vacaciones están aseguradas!</h1>
+    </div>
+    <div *ngIf="this.flightData.length!=0" class="container">
+        <mat-form-field fxFlex="100" fxFlex.gt-sm="100" appearance="outline">
+            <mat-label>Divisas</mat-label>
+            <mat-select (selectionChange)="onCurrencySelected($event)">
+                <mat-option *ngFor="let item of exchange" [value]="item">
+                    {{item[0]}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="flight-list" *ngFor="let journey of flightData; let i = index">
+            <h1>
+                Opción {{i+1}}
+            </h1>
+            <div class="flight-card">
+                <div class="flight-info">
+                    <div class="flight-details" *ngFor="let flights of journey.flights let j = index">
+                        <div>
+                            <p class="flight-route">{{flights.origin}}</p>
+                            <mat-icon class="flight-icon">flight_takeoff</mat-icon>
+                            <div class="line"></div>
+                            <mat-icon class="flight-icon">flight_land</mat-icon>
+                            <p class="flight-route">{{flights.destination}}</p>
+                        </div>
+                        <div>
+                            <p class="flight-route"> Transportista de vuelo: {{flights.transports.flightCarrier}}</p>
+                            <p class="flight-route"> Numero de vuelo: {{flights.transports.flightNumber}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p> Precio: $ {{journey.price | number }} {{exchangeName[0]}} </p>
+                <button class="book-button" (click)="onClickReserve()">Reservar</button>
+            </div>
+        </div>
+    </div>
+
+</div>

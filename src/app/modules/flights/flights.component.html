@@ -1,0 +1,12 @@
+<div>
+    <header class="header">
+        <h1>
+            ¡Newshore By FLYR tu mejor opción para volar!
+        </h1>
+    </header>
+    <div class="content-components">
+        <app-flights-form (characteristicsFlight)="characteristicsFlight($event)"></app-flights-form>
+        <app-flights-response [flightData]="this.journey" [exchange]="this.exchange"
+            (changeCurrencyFlight)="changeCurrencyJourney($event)" (reservateFlight)="reservateFlight()"></app-flights-response>
+    </div>
+</div>

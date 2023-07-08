@@ -1,0 +1,28 @@
+<form [formGroup]="formFlight" class="content-form">
+  <mat-form-field fxFlex="100" fxFlex.gt-sm="100" appearance="outline">
+    <mat-label>Origen</mat-label>
+    <input class="input-text" autocomplete="off" minlength="3" maxlength="3" matInput type="text" name="origin-flights"
+      formControlName="originStation" placeholder="" appAlphaUppercase />
+  </mat-form-field>
+
+  <mat-form-field fxFlex="100" fxFlex.gt-sm="100" appearance="outline">
+    <mat-label>Destino</mat-label>
+    <input matInput type="text" autocomplete="off" minlength="3" maxlength="3" name="destination-flights"
+      formControlName="arrivalStation" placeholder="" appAlphaUppercase />
+    <mat-error *ngIf="formFlight.hasError('sameValues', ['destination'])">Estimado usuario el origen y el destino no
+      pueden ser iguales</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field fxFlex="100" fxFlex.gt-sm="100" appearance="outline">
+    <mat-label>Escalas</mat-label>
+    <select matNativeControl required name="scales-flights" formControlName="scales">
+      <option value=1>Directo</option>
+      <option value=2>Una</option>
+      <option value=3>Dos</option>
+      <option value=10>Más de tres</option>
+    </select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onClickSearchFligths()"> Buscar mi vuelo
+  </button>
+</form>
